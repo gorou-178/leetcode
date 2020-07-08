@@ -8,4 +8,5 @@ reinstall:
 	@make install
 test:
 	docker-compose run --rm php composer test
-
+analyze:
+	docker-compose run --rm php composer analyze

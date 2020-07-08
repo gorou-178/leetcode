@@ -43,6 +43,11 @@
         ],
         "psalm": [
             "@php ./vendor/bin/psalm --show-info=true"
+        ],
+        "analyze": [
+            "@phpmd",
+            "@phpstan",
+            "@psalm"
         ]
     }
 }
