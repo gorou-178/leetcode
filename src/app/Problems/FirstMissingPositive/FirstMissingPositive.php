@@ -2,6 +2,8 @@
 
 namespace App\Problems\FirstMissingPositive;
 
+require_once 'app/bootstrap.php';
+
 class FirstMissingPositive {
 
     /**
@@ -13,6 +15,7 @@ class FirstMissingPositive {
      */
     public function firstMissingPositive($nums)
     {
+        $logger = getLog();
         /**
          * マイナスを無視した値を抽出
          * 最小の整数
@@ -30,8 +33,7 @@ class FirstMissingPositive {
                 $positiveIntegers[] = $nums[$i];
             }
         }
-
-        $index = 0;
+        $logger->info('positiveIntegers = ' . print_r($positiveIntegers, true));
 
         // 正の整数が存在しない場合
         $count = count($positiveIntegers);
@@ -40,6 +42,8 @@ class FirstMissingPositive {
         }
 
         asort($positiveIntegers);
+        $positiveIntegers = array_values($positiveIntegers);
+        $logger->info('sorted positiveIntegers = ' . print_r($positiveIntegers, true));
         if ($positiveIntegers[0] === 0) {
             return 1;
         }
@@ -47,12 +51,32 @@ class FirstMissingPositive {
             return 1;
         }
 
-        for ($i = 1; $i <= $count; ++$i) {
-            if ($positiveIntegers[$index] !== $positiveIntegers[$i] - 1) {
-                return $positiveIntegers[$i] - 1;
+        $logger->info('list: ' . print_r($positiveIntegers, true));
+
+        $currentValue = $positiveIntegers[0];
+        for ($i = 1; $i < $count; ++$i) {
+            //$logger->info("currentValue = $currentValue, positiveIntegers[$i] = {$positiveIntegers[$i]}");
+            if ($currentValue+1 < $positiveIntegers[$i]) {
+                return $currentValue+1;
             }
-            ++$index;
+            $currentValue = $positiveIntegers[$i];
         }
-        return $positiveIntegers[$count-1] + 1;
+        return $currentValue+1;
+
+        // for ($i = 1; $i <= $count; ++$i) {
+        //     if (!isset($positiveIntegers[$i])) {
+        //         return $positiveIntegers[$index] + 1;
+        //     }
+        //     if ($positiveIntegers[$index] === ($positiveIntegers[$i] - 1)) {
+        //         ++$index;
+        //         continue;
+        //     }
+        //     return $positiveIntegers[$index] + 1;
+        //     // if ($positiveIntegers[$i] - $positiveIntegers[$index] > 1) {
+        //     //     return $positiveIntegers[$index] + 1;
+        //     // }
+        //     //return $positiveIntegers[$i] - 1;
+        // }
+        // return $positiveIntegers[$count-1] + 1;
     }
 }
