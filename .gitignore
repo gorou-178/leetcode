@@ -24,3 +24,6 @@ src/vendor/
 
 # PHPUnit
 .phpunit.result.cache
+
+# App
+src/logs/
