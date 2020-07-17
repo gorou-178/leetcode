@@ -50,33 +50,15 @@ class FirstMissingPositive {
         if ($positiveIntegers[0] > 1) {
             return 1;
         }
-
         $logger->info('list: ' . print_r($positiveIntegers, true));
 
         $currentValue = $positiveIntegers[0];
         for ($i = 1; $i < $count; ++$i) {
-            //$logger->info("currentValue = $currentValue, positiveIntegers[$i] = {$positiveIntegers[$i]}");
             if ($currentValue+1 < $positiveIntegers[$i]) {
                 return $currentValue+1;
             }
             $currentValue = $positiveIntegers[$i];
         }
         return $currentValue+1;
-
-        // for ($i = 1; $i <= $count; ++$i) {
-        //     if (!isset($positiveIntegers[$i])) {
-        //         return $positiveIntegers[$index] + 1;
-        //     }
-        //     if ($positiveIntegers[$index] === ($positiveIntegers[$i] - 1)) {
-        //         ++$index;
-        //         continue;
-        //     }
-        //     return $positiveIntegers[$index] + 1;
-        //     // if ($positiveIntegers[$i] - $positiveIntegers[$index] > 1) {
-        //     //     return $positiveIntegers[$index] + 1;
-        //     // }
-        //     //return $positiveIntegers[$i] - 1;
-        // }
-        // return $positiveIntegers[$count-1] + 1;
     }
 }
