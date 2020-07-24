@@ -2,8 +2,6 @@
 
 namespace App\Problems\FirstMissingPositive;
 
-require_once 'app/bootstrap.php';
-
 class FirstMissingPositive {
 
     /**
@@ -15,7 +13,6 @@ class FirstMissingPositive {
      */
     public function firstMissingPositive($nums)
     {
-        $logger = getLog();
         /**
          * マイナスを無視した値を抽出
          * 最小の整数
@@ -33,7 +30,6 @@ class FirstMissingPositive {
                 $positiveIntegers[] = $nums[$i];
             }
         }
-        $logger->info('positiveIntegers = ' . print_r($positiveIntegers, true));
 
         // 正の整数が存在しない場合
         $count = count($positiveIntegers);
@@ -43,14 +39,12 @@ class FirstMissingPositive {
 
         asort($positiveIntegers);
         $positiveIntegers = array_values($positiveIntegers);
-        $logger->info('sorted positiveIntegers = ' . print_r($positiveIntegers, true));
         if ($positiveIntegers[0] === 0) {
             return 1;
         }
         if ($positiveIntegers[0] > 1) {
             return 1;
         }
-        $logger->info('list: ' . print_r($positiveIntegers, true));
 
         $currentValue = $positiveIntegers[0];
         for ($i = 1; $i < $count; ++$i) {
