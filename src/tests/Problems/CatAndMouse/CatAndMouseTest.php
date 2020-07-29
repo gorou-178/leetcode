@@ -21,6 +21,7 @@ class CatAndMouseTest extends TestCase {
      */
     public function catMouseGame_case1()
     {
+        $this->markTestIncomplete('未回答');
         $input = [
             [2,5],
             [3],
