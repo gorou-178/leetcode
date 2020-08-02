@@ -2,8 +2,6 @@
 
 namespace App\Explore\SingleNumber3;
 
-require_once 'app/bootstrap.php';
-
 class SingleNumber3 {
 
     /**

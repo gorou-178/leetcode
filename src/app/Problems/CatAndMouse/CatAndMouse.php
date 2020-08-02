@@ -49,16 +49,16 @@ class CatAndMouse {
             $this->nextTurn();
             $catNode = $this->turnCat();
 
-            if ($mouseNode->equals($catNode)) {
-                $result = self::CAT_WIN;
-            }
-            if ($mouseNode->isHole()) {
-                $result = self::MOUSE_WIN;
-            }
-            if ($mouseNode->position === $beforeMouseNode->position
-                && $catNode->position === $beforeCatNode->position) {
-                $result == self::DRAW;
-            }
+            // if ($mouseNode->equals($catNode)) {
+            //     $result = self::CAT_WIN;
+            // }
+            // if ($mouseNode->isHole()) {
+            //     $result = self::MOUSE_WIN;
+            // }
+            // if ($mouseNode->position === $beforeMouseNode->position
+            //     && $catNode->position === $beforeCatNode->position) {
+            //     $result == self::DRAW;
+            // }
 
             ++$gameCount;
             if ($gameCount === 3) {
